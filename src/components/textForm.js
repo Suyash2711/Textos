@@ -37,6 +37,12 @@ export default function TextForm(props) {
         let newText = chars.join("");
         setText(newText);
     }
+
+    const handleExtraSpaces = ()=>{ //used regex
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
+
     const handleOnChange = (event)=>{
         // console.log("On Change");
         setText(event.target.value);
@@ -50,11 +56,12 @@ export default function TextForm(props) {
         {/* <label for="mybox" className="form-label">{props.heading}</label> */}
         <h1>{props.heading}</h1>
         <textarea className="form-control" value = {text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className="btn btn-primary mx-2" onClick={handleLowClick}>Convert to LowerCase</button>
-        <button className="btn btn-primary mx-2" onClick={handlealtClick}>AlTeRnAtInG cAsE</button>
-        <button className="btn btn-primary mx-2" onClick={handleclearClick}>Clear Text</button>
-        <button className="btn btn-primary mx-2" onClick={handleinverseClick}>iNvErSe CaSe</button>
+        <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
+        <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to LowerCase</button>
+        <button className="btn btn-primary mx-1" onClick={handlealtClick}>AlTeRnAtInG cAsE</button>
+        <button className="btn btn-primary mx-1" onClick={handleclearClick}>Clear Text</button>
+        <button className="btn btn-primary mx-1" onClick={handleinverseClick}>iNvErSe CaSe</button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
     <div className="container my-2">
         <h3>Your Text Summary</h3>
