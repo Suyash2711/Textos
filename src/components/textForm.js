@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 
-
 export default function TextForm(props) {
-    const[text, setText] = useState('Enter the text here'); 
+    const[text, setText] = useState(''); 
 
     const handleUpClick = ()=>{
         // console.log("Upper Case was Clicked");
@@ -52,23 +51,23 @@ export default function TextForm(props) {
     // setText("New Text"); //Correct way to change the state
     return (
         <>
-    <div className="container my-3">
+    <div className="container my-3" style={{color: props.mode==='dark'?'white':'black'}}>
         {/* <label for="mybox" className="form-label">{props.heading}</label> */}
         <h1>{props.heading}</h1>
-        <textarea className="form-control" value = {text} onChange={handleOnChange} id="mybox" rows="8"></textarea>
-        <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to UpperCase</button>
+        <textarea className="form-control" value = {text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'#D1D3E3'}} id="mybox" rows="8"></textarea>
+        <button className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>Convert to UpperCase</button>
         <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to LowerCase</button>
         <button className="btn btn-primary mx-1" onClick={handlealtClick}>AlTeRnAtInG cAsE</button>
         <button className="btn btn-primary mx-1" onClick={handleclearClick}>Clear Text</button>
         <button className="btn btn-primary mx-1" onClick={handleinverseClick}>iNvErSe CaSe</button>
         <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
-    <div className="container my-2">
+    <div className="container my-2" style={{color: props.mode==='dark'?'white':'black'}}>
         <h3>Your Text Summary</h3>
         <p>{text.split(" ").length} words, {text.length} characters</p>
         <b><p>{0.008 * text.split(" ").length} Minutes Read</p></b>
         <h3>Preview</h3>
-        <p>{text}</p>
+        <p>{text.length > 0 ? text : "Enter Something above to preview it here."}</p>
     </div>
     </>
   )
