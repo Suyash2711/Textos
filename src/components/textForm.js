@@ -7,16 +7,29 @@ export default function TextForm(props) {
         // console.log("Upper Case was Clicked");
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to Upper Case", "success");
     }
     const handleLowClick = ()=>{
         // console.log("Lower Case was Clicked");
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to Lower Case", "success");
+    }
+    const handlealtClick = ()=>{
+        // console.log("Alternate Case was Clicked");
+        var chars = text.toLowerCase().split("");
+        for (var i = 0; i < chars.length; i += 2) {
+            chars[i] = chars[i].toUpperCase();
+          }
+        let newText = chars.join("");
+        setText(newText);
+        props.showAlert("Converted to Alternating Case", "success");
     }
     const handleclearClick = ()=>{
         // console.log("Lower Case was Clicked");
         let newText = "";
         setText(newText);
+        props.showAlert("Text Cleared", "success");
     }
     const handleinverseClick = ()=>{
         // console.log("Lower Case was Clicked");
@@ -27,19 +40,11 @@ export default function TextForm(props) {
         let newText = chars.join("");
         setText(newText);
     }
-    const handlealtClick = ()=>{
-        // console.log("Alternate Case was Clicked");
-        var chars = text.toLowerCase().split("");
-        for (var i = 0; i < chars.length; i += 2) {
-            chars[i] = chars[i].toUpperCase();
-          }
-        let newText = chars.join("");
-        setText(newText);
-    }
 
     const handleExtraSpaces = ()=>{ //used regex
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+        props.showAlert("Removed Extra Spaces", "success");
     }
 
     const handleOnChange = (event)=>{
