@@ -47,10 +47,9 @@ function App() {
     <Alert alert={alert}/> 
     <div className="container my-3"  mode={mode}>
     <Switch>
-        <Route path="/about" component={About}/>
-        <Route path="/">
+        <Route exact path="/about" component={About}/>
+        <Route exact path="/">
         <TextForm showAlert={showAlert} heading="Enter the text to Analyse Below"/>
-        {/* <TextForm /> */}
         </Route>
     </Switch>
     </div>
