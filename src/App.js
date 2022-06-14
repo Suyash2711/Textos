@@ -11,7 +11,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
 
 function App() {
@@ -44,10 +43,10 @@ function App() {
     <>
     <Router>
     <Navbar title="Textos" mode={mode} aboutText="About Us" toggleMode = {toggleMode}/>
-    <Alert alert={alert}/> 
+    <Alert alert={alert}/>
     <div className="container my-3"  mode={mode}>
     <Switch>
-        <Route exact path="/about" component={About}/>
+        <Route exact path="/about" component={About} mode={mode} />
         <Route exact path="/">
         <TextForm showAlert={showAlert} heading="Enter the text to Analyse Below"/>
         </Route>

@@ -60,19 +60,19 @@ export default function TextForm(props) {
         {/* <label for="mybox" className="form-label">{props.heading}</label> */}
         <h1>{props.heading}</h1>
         <textarea className="form-control" value = {text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'grey':'#D1D3E3'}} id="mybox" rows="8"></textarea>
-        <button className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>Convert to UpperCase</button>
-        <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to LowerCase</button>
-        <button className="btn btn-primary mx-1" onClick={handlealtClick}>AlTeRnAtInG cAsE</button>
-        <button className="btn btn-primary mx-1" onClick={handleclearClick}>Clear Text</button>
-        <button className="btn btn-primary mx-1" onClick={handleinverseClick}>iNvErSe CaSe</button>
-        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-2" onClick={handleUpClick}>Convert to UpperCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLowClick}>Convert to LowerCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handlealtClick}>AlTeRnAtInG cAsE</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleclearClick}>Clear Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleinverseClick}>iNvErSe CaSe</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove Extra Spaces</button>
     </div>
     <div className="container my-2" style={{color: props.mode==='dark'?'white':'black'}}>
         <h3>Your Text Summary</h3>
-        <p>{text.split(" ").length} words, {text.length} characters</p>
-        <b><p>{0.008 * text.split(" ").length} Minutes Read</p></b>
+        <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words, {text.length} characters</p>
+        <b><p>{0.008 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes Read</p></b>
         <h3>Preview</h3>
-        <p>{text.length > 0 ? text : "Enter Something above to preview it here."}</p>
+        <p>{text.length > 0 ? text : "Nothing to Preview !"}</p>
     </div>
     </>
   )
